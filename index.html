@@ -1,223 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>4our Pixel University - Home</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
-    <link 
-    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
-    rel="stylesheet" type='text/css'>
-</head>
-<body>
-<!------ Main Top ------>    
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>4our Pixel University - Chess Academy</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!------ Main Top ------>
     <section class="header">
-        <nav>
-            <a href="index.html"><img src="images/logo.png"></a>
-            <div class="nav-links" id="navLinks">
-                <i class="fa fa-times" onclick="hideMenu()"></i>
-                    <ul>
-                        <li><a href="index.html">HOME</a></li>
-                        <li><a href="about.html">ABOUT</a></li>
-                        <li><a href="course.html">COURSES</a></li>
-                        <li><a href="blog.html">BLOG</a></li>
-                        <li><a href="contact.html">CONTACT</a></li>
-                    </ul>
-            </div>
-            <i class="fa fa-bars" onclick="showMenu()"></i>
-        </nav>
-    <div class="text-box">
-        <h1>Four Pixel University</h1>
-        <p>Design your future with us. Where passion meets precision!</p>
-        <a href="course.html" class="hero-button ">Let's start now</a>
-    </div>     
+      <nav>
+        <a href="./index.html"><img src="./images/logo.png" /></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="./index.html">HOME</a></li>
+            <li><a href="#courses">COURSES</a></li>
+            <li><a href="./students.html">DATABASE</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-bars" onclick="showMenu()"></i>
+      </nav>
+      <div class="text-box">
+        <h1>Welcome to 4our Pixels University Chess Academy</h1>
+        <p>Learn and master the game of chess with our expert instructors.</p>
+        <a href="#courses" class="btn btn-primary">Explore Courses</a>
+      </div>
     </section>
 
-<!------ Course ------>
+    <!------ Course ------>
 
-<section class="course">
+    <section class="course">
+      <h1>About Us</h1>
+      <p>
+        At 4our Pixels University Chess Academy, we are dedicated to providing
+        high-quality chess education to students of all ages and skill levels.
+        Our experienced instructors are passionate about the game and committed
+        to helping you improve your chess skills.
+      </p>
+      <p>
+        Whether you're a beginner looking to learn the basics or an advanced
+        player aiming to sharpen your strategic thinking, our comprehensive
+        courses and personalized training programs will meet your needs. Join us
+        and embark on a journey to become a chess master!
+      </p>
+      <br />
+      <br />
+      <hr />
+    </section>
 
-    <h1>Services we offer</h1>
-    <p>Branding, logo design, marketing materials, and website design</p>
-
-    <div class="row">
-        <div class="course-column">
-            <h3>Intermediate</h3>
-            <p>Advanced design techniques, such as typography, layout design, 
-                digital design, and possibly internships or practicum experiences 
-                in the design industry. These services aim to provide students 
-                with more specialized skills, and prepare them for professional 
-                level design positions.</p>
-        </div>
-
-        <div class="course-column">
-            <h3>Degree</h3>
-            <p>A Graphic Design degree program covers a wide range of design principles, 
-                techniques, software, foundation courses and specializations, preparing 
-                students for a career in the field.
+    <!-- Courses Section -->
+    <section id="courses">
+      <div class="col">
+        <h1 class="text-center">Our Courses</h1>
+      </div>
+      <div class="row">
+        <br />
+        <br />
+        <br />
+        <div class="course col bg-dark p-5">
+          <div class="course-info">
+            <h3 class="text-muted">Beginner's Guide to Chess</h3>
+            <p class="text-white">
+              Learn the rules, basic strategies, and essential tactics to start
+              playing chess confidently.
             </p>
+            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
+          </div>
         </div>
-
-        <div class="course-column">
-            <h3>Post Graduation</h3>
-            <p>Post-graduates will have the knowledge and skills to work as professional 
-                designers in different industries. They will have a portfolio of their work, 
-                and may have gained real-world experience through internships. Also, they can 
-                choose to work as freelancers or starting their own design business.
+        <div class="course col  bg-dark p-5">
+          <div class="course-info">
+            <h3 class="text-muted">Advanced Chess Tactics</h3>
+            <p class="text-white">
+              Take your chess game to the next level with advanced tactics,
+              positional play, and endgame techniques.
             </p>
+            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
+          </div>
         </div>
-    </div>
-
-</section>
-
-<!------ Campus ------>
-
-<section class="campus">
-    <h1>Our Global Partners</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-
-    <div class="row">
-        <div class="campus-column">
-            <img src="images/london.png">
-            <div class="layer">
-                <h3>LONDON</h3>
-            </div>
+        <div class="course col  bg-dark p-5">
+          <div class="course-info">
+            <h3 class="text-muted">Chess Opening Strategies</h3>
+            <p class="text-white">
+              Master various chess openings and learn how to develop a solid
+              opening repertoire.
+            </p>
+            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="campus-column">
-            <img src="images/newyork.png">
-            <div class="layer">
-                <h3>NEW YORK</h3>
-            </div>
-        </div>
+    <!------ Campus ------>
+    <footer>
+      <div class="container">
+        <p class="text-center">&copy; 2023 4our Pixels University - Chess Academy. All rights reserved.</p>
+      </div>
+    </footer>
+    </section>
 
-        <div class="campus-column">
-            <img src="images/washington.png">
-            <div class="layer">
-                <h3>WASHINGTON</h3>
-            </div>
-        </div>
-    </div>
+    <!------JavaScript for Toggle Menu------>
+    <script>
+      var navLinks = document.getElementById("navLinks");
 
-</section>
-
-<!------ Facilities ------>
-
-<section class="facilities">
-    <h1>Our Facilities</h1>
-    <p>Lorem ipsum dolor sit amet, consectetur adupiscing elit.</p>
-
-    <div class="row">
-        <div class="facilities-column">
-            <img src="images/library.png">
-            <h3>World class designs</h3>
-            <p>Lorem eros risus sollicitudin odio, at accumsan augue 
-                felis et nulla. Fermentum suscipit. Ut tincidunt, 
-                eros quis malesuada</p>
-        </div>
-
-        <div class="facilities-column">
-            <img src="images/basketball.png">
-            <h3>Largest Play Ground</h3>
-            <p>Lorem eros risus sollicitudin odio, at accumsan augue 
-                felis et nulla. Fermentum suscipit. Ut tincidunt, 
-                eros quis malesuada</p>
-        </div>
-
-        <div class="facilities-column">
-            <img src="images/cafeteria.png">
-            <h3>Urban Designs</h3>
-            <p>Lorem eros risus sollicitudin odio, at accumsan augue 
-                felis et nulla. Fermentum suscipit. Ut tincidunt, 
-                eros quis malesuada</p>
-        </div> 
-    </div>
-
-</section>
-
-<!------ Testimonials ------>
-
-<section class="testimonials">
-    <h1>What our clients say</h1>
-    <p>Lorem ipsum dor sit tum.</p>
-
-    <div class="row">
-        <div class="testimonial-column">
-            <img src="images/user1.jpg">
-            <div>
-                <p>Lorem eros risus sollicitudin odio, at 
-                    accumsan augue felis et nulla. Fermentum 
-                    suscipit. Ut tincidunt, eros quis malesuada
-                </p>
-                <h3>Jane Hary</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
-        </div>
-
-        <div class="testimonial-column">
-            <img src="images/user2.jpg">
-            <div>
-                <p>Lorem eros risus sollicitudin odio, at 
-                    accumsan augue felis et nulla. Fermentum 
-                    suscipit. Ut tincidunt, eros quis malesuada
-                </p>
-                <h3>Kevin Spacey</h3>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-half-o"></i>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!------ Call TO Action ------>
-
-<section class="cta">
-    <h1>We look forward to working with you and <br>helping to make your event a success.</h1>
-    <a class="hero-button" href="contact.html">CONTACT US</a>
-</section>
-
-<!------ Call TO Action ------>
-
-<section class="footer">
-    <h4>About Us</h4>
-    <p>Thank you for considering our design agency for your 
-        event needs. We are exited to <br>offer a range of 
-        services to make your event a success.</p>
-    <div class="icons">
-        <i class="fa fa-twitter"></i>
-        <i class="fa fa-facebook"></i>
-        <i class="fa fa-instagram"></i>
-        <i class="fa fa-linkedin"></i>
-        <i class="fa fa-youtube"></i>
-    </div>
-    <div>
-        <p>Made with 4our Pixels</p>
-    </div>
-</section>
-
-<!------JavaScript for Toggle Menu------>
-<script>
-
-    var navLinks = document.getElementById("navLinks");
-
-    function showMenu(){
+      function showMenu() {
         navLinks.style.right = "0";
-    }
-    function hideMenu(){
-        navLinks.style.right = "-200px"
-    }
-
-</script>
-
-</body>
+      }
+      function hideMenu() {
+        navLinks.style.right = "-200px";
+      }
+    </script>
+  </body>
 </html>

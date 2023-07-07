@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Students Database</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Fetch and display student data
+        fetch("./students.json")
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (students) {
+            var tableBody = document.getElementById("tableBody");
+
+            students.forEach(function (student, index) {
+              var row = document.createElement("tr");
+              row.innerHTML = `
+                <th scope="row">${index + 1}</th>
+                <td>${student.firstName}</td>
+                <td>${student.lastName}</td>
+                <td>${student.faculty}</td>
+                <td>${student.age}</td>
+                <td>${student.gender}</td>
+              `;
+              tableBody.appendChild(row);
+            });
+          })
+          .catch(function (error) {
+            console.log("Error:", error);
+          });
+
+        // Add new student data
+        var submitButton = document.getElementById("submitButton");
+        submitButton.addEventListener("click", function () {
+          var nameInput = document.getElementById("nameInput");
+          var firstNameInput = document.getElementById("firstNameInput");
+          var lastNameInput = document.getElementById("lastNameInput");
+          var facultyInput = document.getElementById("facultyInput");
+          var ageInput = document.getElementById("ageInput");
+          var genderInput = document.getElementById("genderInput");
+
+          var student = {
+            name: nameInput.value,
+            firstName: firstNameInput.value,
+            lastName: lastNameInput.value,
+            faculty: facultyInput.value,
+            age: parseInt(ageInput.value),
+            gender: genderInput.value,
+          };
+
+          // Fetch the existing student data
+          fetch("./students.json")
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (students) {
+              // Add the new student to the existing data
+              students.push(student);
+
+              // Save the updated data back to students.json
+              return fetch("./students.json", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(students),
+              });
+            })
+            .then(function () {
+              // Clear input fields
+              nameInput.value = "";
+              firstNameInput.value = "";
+              lastNameInput.value = "";
+              facultyInput.value = "";
+              ageInput.value = "";
+              genderInput.value = "";
+
+              // Reload the page to display the updated data
+              location.reload();
+            })
+            .catch(function (error) {
+              console.log("Error:", error);
+            });
+        });
+      });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+        fetch("./students.json")
+            .then(function (response) {
+            return response.json();
+            })
+            .then(function (students) {
+            var facultyCount = {};
+
+            // Count the number of students in each faculty
+            students.forEach(function (student) {
+                var faculty = student.faculty;
+
+                if (facultyCount.hasOwnProperty(faculty)) {
+                facultyCount[faculty]++;
+                } else {
+                facultyCount[faculty] = 1;
+                }
+            });
+
+            // Update the "Post Categories" table with the faculty count
+            var categoriesContainer = document.getElementById("categoriesContainer");
+            categoriesContainer.innerHTML = ""; // Clear the existing content
+
+            Object.keys(facultyCount).forEach(function (faculty) {
+                var count = facultyCount[faculty];
+
+                var categoryElement = document.createElement("div");
+                categoryElement.style.add = "blog-right"
+                categoryElement.innerHTML = `
+                <button type="button" class="btn btn-secondary small position-relative">
+                ${faculty}
+                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                    ${count}
+                    <span class="visually-hidden">unread messages</span>
+                </span>
+                </button>
+                    `;
+
+                categoriesContainer.appendChild(categoryElement);
+            });
+            })
+            .catch(function (error) {
+            console.log("Error:", error);
+            });
+        });
+
+    </script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    
+  </head>
+  <body>
+    <!------ Main Top ------>
+    <section class="students-sub-header">
+      <nav>
+        <a href="index.html"><img src="images/logo.png" /></a>
+        <div class="nav-links" id="navLinks">
+          <i class="fa fa-times" onclick="hideMenu()"></i>
+          <ul>
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="course.html">COURSES</a></li>
+            <li><a href="blog.html">BLOG</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+          </ul>
+        </div>
+        <i class="fa fa-times" onclick="showMenu()"></i>
+      </nav>
+      <h1>Admin</h1>
+    </section>
+
+    <!------ Blog Page Content ------>
+
+    <section class="blog-content">
+      <div class="row">
+        <div class="blog-left">
+        <h2>Student Database System</h2>
+        <div class="table-responsive">
+            <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">Student ID</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Faculty</th>
+                <th scope="col">Age</th>
+                <th scope="col">Gender</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+        </div>
+        <div id="categoriesContainer" class="blog-right">
+            <h3>Post Categories</h3>
+        </div>
+
+
+        <div class="container">
+          <hr />
+        </div>
+        <br />
+        <br />
+        <br />
+        <form>
+          <h2 class="mb-4">New Student</h2>
+          <div class="form-group">
+            <label class="mb-2" for="nameInput">Name</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="nameInput"
+              placeholder="Name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="mb-2" for="firstNameInput">First Name</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="firstNameInput"
+              placeholder="First Name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="mb-2" for="lastNameInput">Last Name</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="lastNameInput"
+              placeholder="Last Name"
+            />
+          </div>
+          <div class="form-group">
+            <label class="mb-2" for="facultyInput">Faculty</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="facultyInput"
+              placeholder="Faculty"
+            />
+          </div>
+          <div class="form-group">
+            <label class="mb-2" for="ageInput">Age</label>
+            <input
+              type="number"
+              class="form-control mb-2"
+              id="ageInput"
+              placeholder="Age"
+            />
+          </div>
+          <div class="form-group">
+            <label class="mb-2" for="genderInput">Gender</label>
+            <input
+              type="text"
+              class="form-control mb-2"
+              id="genderInput"
+              placeholder="Gender"
+            />
+          </div>
+          <button class="btn btn-primary" >
+            Submit
+          </button>
+        </form>
+    </section>
+
+    <!------ Footer ------>
+
+    <section class="footer">
+      <div>
+        <hr>
+        <a class="text-muted underline " href="https://github.com/4ourpixels/4ourpixels">Copyright &copy; 4our Pixels</a>
+      </div>
+    </section>
+
+    <!------JavaScript for Toggle Menu------>
+    <script>
+      var navLinks = document.getElementById("navLinks");
+
+      function showMenu() {
+        navLinks.style.right = "0";
+      }
+      function hideMenu() {
+        navLinks.style.right = "-200px";
+      }
+    </script>
+  </body>
+</html>

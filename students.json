@@ -1,0 +1,101 @@
+[
+  {
+    "name": "John Doe",
+    "firstName": "John",
+    "lastName": "Doe",
+    "faculty": "Computer Science",
+    "gender": "Male",
+    "age": 20,
+    "image": "https://example.com/images/john-doe.jpg"
+  },
+  {
+    "name": "Jane Smith",
+    "firstName": "Jane",
+    "lastName": "Smith",
+    "faculty": "Business Administration",
+    "gender": "Female",
+    "age": 22,
+    "image": "https://example.com/images/jane-smith.jpg"
+  },
+  {
+    "name": "Michael Johnson",
+    "firstName": "Michael",
+    "lastName": "Johnson",
+    "faculty": "Mechanical Engineering",
+    "gender": "Male",
+    "age": 21,
+    "image": "https://example.com/images/michael-johnson.jpg"
+  },
+  {
+    "name": "Emily Davis",
+    "firstName": "Emily",
+    "lastName": "Davis",
+    "faculty": "Psychology",
+    "gender": "Female",
+    "age": 23,
+    "image": "https://example.com/images/emily-davis.jpg"
+  },
+  {
+    "name": "David Brown",
+    "firstName": "David",
+    "lastName": "Brown",
+    "faculty": "Electrical Engineering",
+    "gender": "Male",
+    "age": 22,
+    "image": "https://example.com/images/david-brown.jpg"
+  },
+  {
+    "name": "Sophia Johnson",
+    "firstName": "Sophia",
+    "lastName": "Johnson",
+    "faculty": "Computer Science",
+    "gender": "Female",
+    "age": 20,
+    "image": "https://example.com/images/sophia-johnson.jpg"
+  },
+  {
+    "name": "Daniel Wilson",
+    "firstName": "Daniel",
+    "lastName": "Wilson",
+    "faculty": "Chemistry",
+    "gender": "Male",
+    "age": 21,
+    "image": "https://example.com/images/daniel-wilson.jpg"
+  },
+  {
+    "name": "Olivia Anderson",
+    "firstName": "Olivia",
+    "lastName": "Anderson",
+    "faculty": "Biology",
+    "gender": "Female",
+    "age": 20,
+    "image": "https://example.com/images/olivia-anderson.jpg"
+  },
+  {
+    "name": "Alexander Martinez",
+    "firstName": "Alexander",
+    "lastName": "Martinez",
+    "faculty": "Political Science",
+    "gender": "Male",
+    "age": 22,
+    "image": "https://example.com/images/alexander-martinez.jpg"
+  },
+  {
+    "name": "Ava Thompson",
+    "firstName": "Ava",
+    "lastName": "Thompson",
+    "faculty": "Journalism",
+    "gender": "Female",
+    "age": 21,
+    "image": "https://example.com/images/ava-thompson.jpg"
+  },
+  {
+    "name": "Miss JT",
+    "firstName": "Miss",
+    "lastName": "JT",
+    "faculty": "Bio-Chem",
+    "gender": "Female",
+    "age": 23,
+    "image": "https://example.com/images/ava-thompson.jpg"
+  }
+]
