@@ -5,152 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Students Database</title>
     <link rel="icon" type="image/x-icon" href="./images/favicon/favicon.ico" />
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        // Fetch and display student data
-        fetch("./students.json")
-          .then(function (response) {
-            return response.json();
-          })
-          .then(function (students) {
-            var tableBody = document.getElementById("tableBody");
-
-            students.forEach(function (student, index) {
-              var row = document.createElement("tr");
-              row.innerHTML = `
-                <th scope="row">${index + 1}</th>
-                <td>${student.firstName}</td>
-                <td>${student.lastName}</td>
-                <td>${student.faculty}</td>
-                <td>${student.age}</td>
-                <td>${student.gender}</td>
-              `;
-              tableBody.appendChild(row);
-            });
-          })
-          .catch(function (error) {
-            console.log("Error:", error);
-          });
-
-        // Add new student data
-        var submitButton = document.getElementById("submitButton");
-        submitButton.addEventListener("click", function () {
-          var nameInput = document.getElementById("nameInput");
-          var firstNameInput = document.getElementById("firstNameInput");
-          var lastNameInput = document.getElementById("lastNameInput");
-          var facultyInput = document.getElementById("facultyInput");
-          var ageInput = document.getElementById("ageInput");
-          var genderInput = document.getElementById("genderInput");
-
-          var student = {
-            name: nameInput.value,
-            firstName: firstNameInput.value,
-            lastName: lastNameInput.value,
-            faculty: facultyInput.value,
-            age: parseInt(ageInput.value),
-            gender: genderInput.value,
-          };
-
-          // Fetch the existing student data
-          fetch("./students.json")
-            .then(function (response) {
-              return response.json();
-            })
-            .then(function (students) {
-              // Add the new student to the existing data
-              students.push(student);
-
-              // Save the updated data back to students.json
-              return fetch("./students.json", {
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                },
-                body: JSON.stringify(students),
-              });
-            })
-            .then(function () {
-              // Clear input fields
-              nameInput.value = "";
-              firstNameInput.value = "";
-              lastNameInput.value = "";
-              facultyInput.value = "";
-              ageInput.value = "";
-              genderInput.value = "";
-
-              // Reload the page to display the updated data
-              location.reload();
-            })
-            .catch(function (error) {
-              console.log("Error:", error);
-            });
-        });
-      });
-    </script>
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-        fetch("./students.json")
-            .then(function (response) {
-            return response.json();
-            })
-            .then(function (students) {
-            var facultyCount = {};
-
-            // Count the number of students in each faculty
-            students.forEach(function (student) {
-                var faculty = student.faculty;
-
-                if (facultyCount.hasOwnProperty(faculty)) {
-                facultyCount[faculty]++;
-                } else {
-                facultyCount[faculty] = 1;
-                }
-            });
-
-            // Update the "Post Categories" table with the faculty count
-            var categoriesContainer = document.getElementById("categoriesContainer");
-            categoriesContainer.innerHTML = ""; // Clear the existing content
-
-            Object.keys(facultyCount).forEach(function (faculty) {
-                var count = facultyCount[faculty];
-
-                var categoryElement = document.createElement("div");
-                categoryElement.style.add = "blog-right"
-                categoryElement.innerHTML = `
-                <button type="button" class="btn btn-secondary small position-relative">
-                ${faculty}
-                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                    ${count}
-                    <span class="visually-hidden">unread messages</span>
-                </span>
-                </button>
-                    `;
-
-                categoriesContainer.appendChild(categoryElement);
-            });
-            })
-            .catch(function (error) {
-            console.log("Error:", error);
-            });
-        });
-
-    </script>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
       crossorigin="anonymous"
     />
-
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
       rel="stylesheet"
-      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
     />
-    
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.27.3"></script>
   </head>
   <body>
     <!------ Main Top ------>
@@ -175,117 +46,302 @@
     <!------ Blog Page Content ------>
 
     <section class="blog-content">
-      <div class="row">
-        <div class="blog-left">
-        <h2>Student Database System</h2>
-        <div class="table-responsive">
-            <table class="table">
+      <div class="container mt-5">
+        <h1>Student Database</h1>
+        <div class="container">
+          <div id="chartContainer"></div>
+        </div>
+        <hr>
+
+        <div class="row">
+          <!-- Add Student Form -->
+          <form class="col-5" id="studentForm">
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" class="form-control" id="firstName" required />
+            </div>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" class="form-control" id="lastName" required />
+            </div>
+            <div class="mb-3">
+              <label for="faculty" class="form-label">Faculty</label>
+              <input type="text" class="form-control" id="faculty" required />
+            </div>
+            <div class="mb-3">
+              <label for="age" class="form-label">Age</label>
+              <input type="number" class="form-control" id="age" required />
+            </div>
+            <div class="mb-3">
+              <label for="gender" class="form-label">Gender</label>
+              <select class="form-select" id="gender" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <button type="submit" class="btn w-100 btn-success">Save</button>
+          </form>
+
+        <div class="col ms-4 border px-4 rounded">
+          <!-- Student Table -->
+          <table class="table mt-4">
             <thead>
-                <tr>
-                <th scope="col">Student ID</th>
-                <th scope="col">First Name</th>
-                <th scope="col">Last Name</th>
+              <tr>
+                <th scope="col">Name</th>
                 <th scope="col">Faculty</th>
                 <th scope="col">Age</th>
                 <th scope="col">Gender</th>
-                </tr>
+                <th scope="col">Actions</th>
+              </tr>
             </thead>
-            <tbody id="tableBody"></tbody>
-            </table>
+            <tbody id="studentTableBody"></tbody>
+          </table>
         </div>
-        </div>
-        <div id="categoriesContainer" class="blog-right">
-            <h3>Post Categories</h3>
-        </div>
-
-
-        <div class="container">
-          <hr />
-        </div>
-        <br />
-        <br />
-        <br />
-        <form>
-          <h2 class="mb-4">New Student</h2>
-          <div class="form-group">
-            <label class="mb-2" for="nameInput">Name</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="nameInput"
-              placeholder="Name"
-            />
-          </div>
-          <div class="form-group">
-            <label class="mb-2" for="firstNameInput">First Name</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="firstNameInput"
-              placeholder="First Name"
-            />
-          </div>
-          <div class="form-group">
-            <label class="mb-2" for="lastNameInput">Last Name</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="lastNameInput"
-              placeholder="Last Name"
-            />
-          </div>
-          <div class="form-group">
-            <label class="mb-2" for="facultyInput">Faculty</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="facultyInput"
-              placeholder="Faculty"
-            />
-          </div>
-          <div class="form-group">
-            <label class="mb-2" for="ageInput">Age</label>
-            <input
-              type="number"
-              class="form-control mb-2"
-              id="ageInput"
-              placeholder="Age"
-            />
-          </div>
-          <div class="form-group">
-            <label class="mb-2" for="genderInput">Gender</label>
-            <input
-              type="text"
-              class="form-control mb-2"
-              id="genderInput"
-              placeholder="Gender"
-            />
-          </div>
-          <button class="btn btn-primary" >
-            Submit
-          </button>
-        </form>
+      </div>
     </section>
+
+    <script>
+    // Student data
+    var students = JSON.parse(localStorage.getItem('students')) || [];
+
+    // Function to display student data
+    function displayStudentData() {
+      // Retrieve student data from local storage
+      students = JSON.parse(localStorage.getItem('students')) || [];
+
+      // Display student data in the table
+      // ...
+
+      // Generate data for ApexChart
+      var categories = {};
+      students.forEach(function(student) {
+        var category = student.faculty;
+        var age = parseInt(student.age);
+
+        if (!categories[category]) {
+          categories[category] = {
+            ages: [],
+            counts: []
+          };
+        }
+
+        categories[category].ages.push(age);
+      });
+
+      var series = [];
+      Object.keys(categories).forEach(function(category) {
+        var data = categories[category];
+        var counts = {};
+
+        data.ages.forEach(function(age) {
+          if (!counts[age]) {
+            counts[age] = 0;
+          }
+
+          counts[age]++;
+        });
+
+        var countArray = Object.values(counts);
+        series.push(countArray.reduce(function(acc, curr) {
+          return acc + curr;
+        }, 0));
+      });
+
+      // Render ApexChart
+      var options = {
+        chart: {
+          type: 'donut',
+          height: 350
+        },
+        series: series,
+        labels: Object.keys(categories).map(function(category) {
+          return category.toString();
+        }),
+        responsive: [{
+          breakpoint: 480,
+          options: {
+            chart: {
+              width: 200
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+      };
+
+      var chart = new ApexCharts(document.getElementById('chartContainer'), options);
+      chart.render();
+    }
+
+    // Call the displayStudentData function to populate the table and chart initially
+    displayStudentData();
+  </script>
+
+    <script>
+      // Function to generate a unique ID
+      function generateUniqueId() {
+        return Date.now().toString(36) + Math.random().toString(36).substr(2);
+      }
+
+      // Function to save student data
+      function saveStudentData(event) {
+        event.preventDefault();
+
+        // Retrieve form values
+        var firstName = document.getElementById("firstName").value;
+        var lastName = document.getElementById("lastName").value;
+        var faculty = document.getElementById("faculty").value;
+        var age = document.getElementById("age").value;
+        var gender = document.getElementById("gender").value;
+
+        // Generate unique ID
+        var id = generateUniqueId();
+
+        // Create student object
+        var student = {
+          id: id,
+          firstName: firstName,
+          lastName: lastName,
+          faculty: faculty,
+          age: age,
+          gender: gender,
+        };
+
+        // Get existing student data from local storage or initialize an empty array
+        var students = JSON.parse(localStorage.getItem("students")) || [];
+
+        // Add new student to the array
+        students.push(student);
+
+        // Save the updated array back to local storage
+        localStorage.setItem("students", JSON.stringify(students));
+
+        // Clear form inputs
+        document.getElementById("firstName").value = "";
+        document.getElementById("lastName").value = "";
+        document.getElementById("faculty").value = "";
+        document.getElementById("age").value = "";
+        document.getElementById("gender").value = "";
+
+        // Refresh the student table
+        displayStudentData();
+      }
+
+      // Function to display student data in the table
+      function displayStudentData() {
+        var studentTableBody = document.getElementById("studentTableBody");
+        studentTableBody.innerHTML = "";
+
+        // Retrieve student data from local storage
+        var students = JSON.parse(localStorage.getItem("students")) || [];
+
+        students.forEach(function (student) {
+          var row = document.createElement("tr");
+          row.innerHTML = `
+            <td>${student.firstName}</td>
+            <td>${student.faculty}</td>
+            <td>${student.age}</td>
+            <td>${student.gender}</td>
+            <td>
+              <button class="btn btn-sm btn-success" onclick="editStudent('${student.id}')">Edit</button>
+              <button class="btn btn-sm btn-danger" onclick="deleteStudent('${student.id}')"><i class="fa-solid fa-trash"></i></button>
+            </td>
+          `;
+          studentTableBody.appendChild(row);
+        });
+      }
+
+      // Function to delete a student
+      function deleteStudent(id) {
+        // Retrieve student data from local storage
+        var students = JSON.parse(localStorage.getItem("students")) || [];
+
+        // Find the student index
+        var studentIndex = students.findIndex(function (student) {
+          return student.id === id;
+        });
+
+        if (studentIndex !== -1) {
+          // Remove the student from the array
+          students.splice(studentIndex, 1);
+
+          // Save the updated array back to local storage
+          localStorage.setItem("students", JSON.stringify(students));
+
+          // Refresh the student table
+          displayStudentData();
+        }
+      }
+
+      // Function to edit a student
+      function editStudent(id) {
+        // Retrieve student data from local storage
+        var students = JSON.parse(localStorage.getItem("students")) || [];
+
+        // Find the student by ID
+        var student = students.find(function (student) {
+          return student.id === id;
+        });
+
+        if (student) {
+          // Fill the form with student data
+          document.getElementById("firstName").value = student.firstName;
+          document.getElementById("lastName").value = student.lastName;
+          document.getElementById("faculty").value = student.faculty;
+          document.getElementById("age").value = student.age;
+          document.getElementById("gender").value = student.gender;
+
+          // Delete the student record
+          deleteStudent(id);
+        }
+      }
+
+      // Initial display of student data
+      displayStudentData();
+
+      // Add form submit event listener
+      var studentForm = document.getElementById("studentForm");
+      studentForm.addEventListener("submit", saveStudentData);
+    </script>
 
     <!------ Footer ------>
 
     <section class="footer">
       <div>
-        <hr>
-        <a class="text-muted underline " href="https://github.com/4ourpixels/4ourpixels">Copyright &copy; 4our Pixels</a>
+        <hr />
+        <a
+          class="text-muted underline"
+          href="https://github.com/4ourpixels/4ourpixels"
+          >Website by 4our Pixels</a
+        >
       </div>
     </section>
 
-    <!------JavaScript for Toggle Menu------>
+    <!------JavaScript for Toggle Menu and Local Storage ------>
     <script>
       var navLinks = document.getElementById("navLinks");
 
       function showMenu() {
         navLinks.style.right = "0";
       }
+
       function hideMenu() {
         navLinks.style.right = "-200px";
       }
     </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"
+      integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
