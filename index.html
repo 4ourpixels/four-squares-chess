@@ -1,133 +1,218 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4our Pixel University - Chess Academy</title>
-    <link rel="icon" type="image/x-icon" href="./images/favicon/favicon.ico" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css"
-      rel="stylesheet"
-      type="text/css"
-    />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <!------ Main Top ------>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Four Squares Chess - Master Chess in Four Hundred Moves</title>
+    <meta name="description" content="Join Four Squares Chess Academy to master the art of chess in four hundred moves. Learn, compete, and connect with our thriving chess community. Start your journey to becoming a chess champion today!">
+    <meta name="keywords" content="Four Squares Chess Academy, chess lessons, chess community, chess meetups, chess games, chess strategy, learn chess, chess master, chess club, chess tournaments">
+    <meta name="author" content="Four Squares Chess Academy">
+    <meta property="og:title" content="Four Squares Chess Academy - Master Chess in Four Hundred Moves">
+    <meta property="og:description" content="Join Four Squares Chess Academy to master the art of chess in four hundred moves. Learn, compete, and connect with our thriving chess community.">
+    <meta property="og:image" content="URL_to_your_image">
+    <meta property="og:url" content="www.foursquareschess">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Four Squares Chess Academy - Master Chess in Four Hundred Moves">
+    <meta name="twitter:description" content="Join Four Squares Chess Academy to master the art of chess in four hundred moves. Learn, compete, and connect with our thriving chess community.">
+    <meta name="twitter:image" content="URL_to_your_image">
+    <meta name="twitter:site" content="@foursquareschess">
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400;600;700&display=swap" rel="stylesheet">
+    <link 
+    href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.css" 
+    rel="stylesheet" type='text/css'>
+</head>
+<body>
+<!------ Main Top ------>    
     <section class="header">
-      <nav>
-        <a href="./index.html"><img src="./images/logo.png" /></a>
-        <div class="nav-links" id="navLinks">
-          <i class="fa fa-times" onclick="hideMenu()"></i>
-          <ul>
-            <li><a href="./index.html">HOME</a></li>
-            <li><a href="#courses">COURSES</a></li>
-            <li><a href="./students.html">DATABASE</a></li>
-          </ul>
-        </div>
-        <i class="fa fa-bars" onclick="showMenu()"></i>
-      </nav>
-      <div class="text-box">
-        <h1>Welcome to 4our Pixels University Chess Academy</h1>
-        <p>Learn and master the game of chess with our expert instructors.</p>
-        <a href="#courses" class="btn btn-primary">Explore Courses</a>
-        <a href="./students.html" class="btn btn-outline-light">Student Database</a>
-      </div>
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                    <ul>
+                        <li><a href="index.html">HOME</a></li>
+                        <li><a href="about.html">ABOUT</a></li>
+                        <li><a href="course.html">COURSES</a></li>
+                        <li><a href="blog.html">BLOG</a></li>
+                        <li><a href="contact.html">CONTACT</a></li>
+                    </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+    <div class="text-box">
+        <h1>Four Squares Chess</h1>
+        <p>Building a Community of Chess Champions!</p>
+        <a href="course.html" class="hero-button ">Let's start now</a>
+    </div>     
     </section>
 
-    <!------ Course ------>
+<!------ Course ------>
 
-    <section class="course">
-      <h1>About Us</h1>
-      <p>
-        At 4our Pixels University Chess Academy, we are dedicated to providing
-        high-quality chess education to students of all ages and skill levels.
-        Our experienced instructors are passionate about the game and committed
-        to helping you improve your chess skills.
-      </p>
-      <p>
-        Whether you're a beginner looking to learn the basics or an advanced
-        player aiming to sharpen your strategic thinking, our comprehensive
-        courses and personalized training programs will meet your needs. Join us
-        and embark on a journey to become a chess master!
-      </p>
-      <br />
-      <br />
-      <hr />
-    </section>
+<section class="course">
 
-    <!-- Courses Section -->
-    <section id="courses">
-      <div class="col">
-        <h1 class="text-center">Our Courses</h1>
-      </div>
-      <div class="row">
-        <br />
-        <br />
-        <br />
-        <div class="course col bg-dark p-5">
-          <div class="course-info">
-            <h3 class="text-muted">Beginner's Guide to Chess</h3>
-            <p class="text-white">
-              Learn the rules, basic strategies, and essential tactics to start
-              playing chess confidently.
-            </p>
-            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
-          </div>
+    <h1>Services we offer</h1>
+    <p>From chess lessons, tips and meetups!</p>
+
+    <div class="row">
+        <div class="course-column">
+            <h3>Chess Lessons and Tutorials</h3>
+            <p>Offer comprehensive chess lessons for various skill levels, from beginners to advanced players. Include video tutorials, interactive lessons, and written guides that cover fundamental strategies, openings, endgames, and advanced tactics.</p>
         </div>
-        <div class="course col  bg-dark p-5">
-          <div class="course-info">
-            <h3 class="text-muted">Advanced Chess Tactics</h3>
-            <p class="text-white">
-              Take your chess game to the next level with advanced tactics,
-              positional play, and endgame techniques.
-            </p>
-            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
-          </div>
+
+        <div class="course-column">
+            <h3>Online Chess Tournaments and Meetups</h3>
+            <p>Organize regular online chess tournaments and meetups to foster a sense of community and provide players with opportunities to compete and improve. Include options for different formats such as blitz, rapid, and classical games.</p>
         </div>
-        <div class="course col  bg-dark p-5">
-          <div class="course-info">
-            <h3 class="text-muted">Chess Opening Strategies</h3>
-            <p class="text-white">
-              Master various chess openings and learn how to develop a solid
-              opening repertoire.
-            </p>
-            <a href="#" class="btn btn-outline-secondary">Enroll Now</a>
-          </div>
+
+        <div class="course-column">
+            <h3>Chess Community and Resources</h3>
+            <p>Build a vibrant chess community where members can share knowledge, discuss strategies, and connect with fellow enthusiasts. Provide access to a rich library of resources including articles, books, puzzles, and news updates.</p>
         </div>
-      </div>
-    </section>
+    </div>
 
-    <!------ Campus ------>
-    <footer>
-      <div class="container">
-        <p class="text-center">&copy; 2023 4our Pixels University - Chess Academy. All rights reserved.</p>
-      </div>
-    </footer>
-    </section>
+</section>
 
-    <!------JavaScript for Toggle Menu------>
-    <script>
-      var navLinks = document.getElementById("navLinks");
+<!------ Campus ------>
 
-      function showMenu() {
+<section class="campus">
+    <h1>Our Store</h1>
+    <p>Shop our store from sleek threads to cool boards!</p>
+
+    <div class="row">
+        <div class="campus-column">
+            <img src="images/london.png">
+            <div class="layer">
+                <h3>Apparel</h3>
+            </div>
+        </div>
+
+        <div class="campus-column">
+            <img src="images/newyork.png">
+            <div class="layer">
+                <h3>Boards</h3>
+            </div>
+        </div>
+
+        <div class="campus-column">
+            <img src="images/washington.png">
+            <div class="layer">
+                <h3>Wallpapers</h3>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<!------ Facilities ------>
+
+<section class="facilities">
+    <h1>Our Blogs</h1>
+    <p>Read the latest news, blogs and updates.</p>
+
+    <div class="row">
+        <div class="facilities-column">
+            <img src="images/library.png">
+            <h3>How to win in four moves!</h3>
+            <p>The move is called "Foolsmate" and can only be won with white! Read more about this.</p>
+        </div>
+
+        <div class="facilities-column">
+            <img src="images/basketball.png">
+            <h3>Controlling the center</h3>
+            <p>The first step to have a solid defence is being able to control the center of the chess board. Let's see how.</p>
+        </div>
+
+        <div class="facilities-column">
+            <img src="images/cafeteria.png">
+            <h3>What is castling?</h3>
+            <p>Getting your King into safety by standing behind a solid wall of pawns to prevent harassment from checks.</p>
+        </div> 
+    </div>
+
+</section>
+
+<!------ Testimonials ------>
+
+<section class="testimonials">
+    <h1>What our students say</h1>
+    <p>Lorem ipsum dor sit tum.</p>
+
+    <div class="row">
+        <div class="testimonial-column">
+            <img src="images/user1.jpg">
+            <div>
+                <p>Lorem eros risus sollicitudin odio, at 
+                    accumsan augue felis et nulla. Fermentum 
+                    suscipit. Ut tincidunt, eros quis malesuada
+                </p>
+                <h3>Jane Hary</h3>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-o"></i>
+            </div>
+        </div>
+
+        <div class="testimonial-column">
+            <img src="images/user2.jpg">
+            <div>
+                <p>Lorem eros risus sollicitudin odio, at 
+                    accumsan augue felis et nulla. Fermentum 
+                    suscipit. Ut tincidunt, eros quis malesuada
+                </p>
+                <h3>Kevin Spacey</h3>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star"></i>
+                <i class="fa fa-star-half-o"></i>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!------ Call TO Action ------>
+
+<section class="cta">
+    <h1>Ready to elevate your chess game?<br>Get in touch today to learn more!</h1>
+    <a class="hero-button" href="contact.html">CONTACT US</a>
+</section>
+
+<!------ Call TO Action ------>
+
+<section class="footer">
+    <h4>About Us</h4>
+    <p>At Four Squares Chess Academy, we are dedicated to helping you master chess through expert lessons, competitive tournaments, and a vibrant community of enthusiasts.</p>
+    <div class="icons">
+        <i class="fa fa-twitter"></i>
+        <i class="fa fa-facebook"></i>
+        <i class="fa fa-instagram"></i>
+        <i class="fa fa-linkedin"></i>
+        <i class="fa fa-youtube"></i>
+    </div>
+    <div>
+        <p><a style="text-decoration: none; color: inherit" href="https://fourpixels.studio">Made with Four Pixels</a></p>
+    </div>
+</section>
+
+<!------JavaScript for Toggle Menu------>
+<script>
+
+    var navLinks = document.getElementById("navLinks");
+
+    function showMenu(){
         navLinks.style.right = "0";
-      }
-      function hideMenu() {
-        navLinks.style.right = "-200px";
-      }
-    </script>
-  </body>
+    }
+    function hideMenu(){
+        navLinks.style.right = "-200px"
+    }
+
+</script>
+
+</body>
 </html>
