@@ -21,7 +21,7 @@ nav {
 }
 
 nav img {
-    width: 150px;
+    width: 160px;
 }
 
 .nav-links{
@@ -355,10 +355,11 @@ h3{
 
 .footer{
     max-height: 400px;
-    background-color: #fefefe;
+    background-color: #e9fffd;
     width: 100%;
     text-align: center;
     padding: 30px 0;
+    border-radius: 18px;
 }
 
 .footer h4{
@@ -366,9 +367,13 @@ h3{
     margin-top: 20px;
     font-weight: 600;
 }
+.footer-container{
+    margin: 2rem;
+}
 
-.icons .fa{
-    color: #30d5c8;
+
+.icons .fa-brands{
+
     margin: 0 13px;
     cursor: pointer;
     padding: 18px 0;
